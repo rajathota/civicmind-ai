@@ -1,0 +1,37 @@
+# CivicMind Parking Service - Local Development
+# =============================================
+
+version: '3.8'
+
+services:
+  parking-service:
+    build: .
+    ports:
+      - "8001:8000"  # Map to different port to avoid conflicts
+    environment:
+      - SERVICE_PORT=8000
+      - LOG_LEVEL=DEBUG
+      - DEBUG=true
+    volumes:
+      - ./src:/app/src  # Mount source for development
+    networks:
+      - civicmind-network
+
+  # Optional: Add database if needed
+  # parking-db:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: parking_service
+  #     POSTGRES_USER: civicmind
+  #     POSTGRES_PASSWORD: development
+  #   volumes:
+  #     - parking_db_data:/var/lib/postgresql/data
+  #   networks:
+  #     - civicmind-network
+
+networks:
+  civicmind-network:
+    driver: bridge
+
+# volumes:
+#   parking_db_data:

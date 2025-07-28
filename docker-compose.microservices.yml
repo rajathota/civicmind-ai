@@ -1,0 +1,238 @@
+# Docker Compose for CivicMind Microservices
+# ==========================================
+# Orchestrates API Gateway and MCP servers with proper networking
+
+version: '3.8'
+
+services:
+  # API Gateway Service
+  api-gateway:
+    build:
+      context: .
+      dockerfile: services/api_gateway/Dockerfile
+    ports:
+      - "8300:8300"
+    environment:
+      - DEBUG=false
+      - MCP_PARKING_HOST=parking-mcp
+      - MCP_PERMITS_HOST=permits-mcp
+      - MCP_NOISE_HOST=noise-mcp
+      - MCP_INFRASTRUCTURE_HOST=infrastructure-mcp
+      - MCP_BUSINESS_HOST=business-mcp
+      - MCP_RELIGIOUS_HOST=religious-mcp
+      - MCP_DISPUTES_HOST=disputes-mcp
+      - MCP_ENVIRONMENTAL_HOST=environmental-mcp
+    depends_on:
+      - parking-mcp
+      - permits-mcp
+      - noise-mcp
+      - infrastructure-mcp
+      - business-mcp
+      - religious-mcp
+      - disputes-mcp
+      - environmental-mcp
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8300/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MCP Server Services
+  parking-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: parking
+        PORT: 9300
+    ports:
+      - "9300:9300"
+    environment:
+      - AGENT_TYPE=parking
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9300/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  permits-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: permits
+        PORT: 9301
+    ports:
+      - "9301:9301"
+    environment:
+      - AGENT_TYPE=permits
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  noise-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: noise
+        PORT: 9302
+    ports:
+      - "9302:9302"
+    environment:
+      - AGENT_TYPE=noise
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  infrastructure-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: infrastructure
+        PORT: 9303
+    ports:
+      - "9303:9303"
+    environment:
+      - AGENT_TYPE=infrastructure
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  business-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: business
+        PORT: 9304
+    ports:
+      - "9304:9304"
+    environment:
+      - AGENT_TYPE=business
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  religious-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: religious_events
+        PORT: 9305
+    ports:
+      - "9305:9305"
+    environment:
+      - AGENT_TYPE=religious_events
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  disputes-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: neighbor_dispute
+        PORT: 9306
+    ports:
+      - "9306:9306"
+    environment:
+      - AGENT_TYPE=neighbor_dispute
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  environmental-mcp:
+    build:
+      context: .
+      dockerfile: services/mcp_servers/Dockerfile
+      args:
+        AGENT_NAME: environmental
+        PORT: 9307
+    ports:
+      - "9307:9307"
+    environment:
+      - AGENT_TYPE=environmental
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  # Supporting Services
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: civicmind
+      POSTGRES_USER: civicmind
+      POSTGRES_PASSWORD: civicmind_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Monitoring Services
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    networks:
+      - civicmind-network
+    restart: unless-stopped
+
+# Network Configuration
+networks:
+  civicmind-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# Volume Configuration
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local

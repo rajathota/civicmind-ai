@@ -1,78 +1,174 @@
 <div align="center">
   <h1>🏛️ CivicMind AI</h1>
   <p><strong>The Digital Civic Utility for Modern Communities</strong></p>
-  <p><em>AI-powered civic engagement platform that transforms how citizens resolve local issues through intelligent agents and community-first solutions</em></p>
+  <p><em>AI-powered microservices platform that transforms how citizens interact with government services through intelligent agents and scalable architecture</em></p>
   
   <p>
     <a href="docs/quickstart.md">🚀 Quick Start</a> •
     <a href="docs/architecture.md">🏗️ Architecture</a> •
     <a href="docs/deployment.md">� Deployment</a> •
-    <a href="docs/examples.md">💡 Examples</a> •
+    <a href="docs/examples/">💡 Examples</a> •
     <a href="CONTRIBUTING.md">🤝 Contributing</a>
   </p>
 
   <img src="https://img.shields.io/badge/Python-3.11+-blue.svg" alt="Python Version">
   <img src="https://img.shields.io/badge/License-Apache%202.0-green.svg" alt="License">
-  <img src="https://img.shields.io/badge/AI-OpenAI%20GPT--4-orange.svg" alt="AI Model">
-  <img src="https://img.shields.io/badge/Framework-LangChain-purple.svg" alt="Framework">
-  <img src="https://img.shields.io/badge/Deployment-Self--Hosted-brightgreen.svg" alt="Self-Hosted">
+  <img src="https://img.shields.io/badge/MCP-Protocol-purple.svg" alt="MCP Protocol">
+  <img src="https://img.shields.io/badge/FastAPI-Microservices-orange.svg" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Deployment-Docker%2BK8s-brightgreen.svg" alt="Deployment">
   <img src="https://img.shields.io/badge/Community-First-ff6b6b.svg" alt="Community First">
 </div>
 
 ---
 
+## 🔭 **The Big Idea: Modern Agentic AI as a Digital Civic Utility**
+
+### **Analogy:**
+📞 **The telephone booth used to connect you to people.**  
+🤖 **Your Agentic AI App connects you to solutions** — from reporting water issues, to filing property tax appeals, to understanding your neighborhood rules.
+
+The "booth" of the future is not a phone, it's an AI assistant embedded into daily life — answering questions, taking actions, and guiding you through real-world processes.
+
+## 🧠 **Core Principles for Building a General Agentic AI System**
+
+| Principle | Why it Matters |
+|-----------|----------------|
+| **Real-World Context** | The agent should understand local laws, forms, people, deadlines. Not just generic answers. |
+| **Multi-Modal Input** | Accept voice, text, images (like a complaint photo, scanned letter, map). |
+| **Action-Oriented** | Not just explain things — fill forms, write letters, send complaints, call APIs. |
+| **Stateful Memory** | Remember past problems, track resolutions (e.g. "your HOA escalation is pending") |
+| **Composable Skills** | Plug in tools: search → summarize → fill PDF → email → track → alert. |
+| **Human-in-the-Loop** | Ask for confirmation before legal or irreversible actions. |
+| **Trustworthy and Compliant** | Especially for government-facing tasks: respect privacy, legality, explainability. |
+
 ## 🌟 **What is CivicMind AI?**
 
 > **"The digital civic utility for the modern age"**
 
-CivicMind AI is an intelligent civic engagement platform that serves as a unified digital gateway for citizens to resolve local issues. Just as telephone booths once connected people across distances, CivicMind AI connects residents to solutions, resources, and community harmony in the digital age.
+CivicMind AI implements these principles through a comprehensive microservices platform that revolutionizes how citizens interact with government services. Just as telephone booths once connected people across distances, CivicMind AI connects residents to solutions, resources, and community harmony through intelligent AI agents and scalable civic services.
 
-Our platform uses specialized AI agents to understand context, respect cultural values, and guide communities toward neighborly solutions before legal escalation. We prioritize building stronger, more connected communities through intelligent civic assistance.
+Our platform uses specialized AI agents powered by the Model Context Protocol (MCP) to understand context, respect cultural values, and provide actionable guidance across 8 core civic domains. We prioritize building stronger, more connected communities through intelligent civic assistance.
 
 ## 🎯 **Core Mission & Values**
 
-**Mission**: Transform civic engagement by making local government services accessible, intelligent, and community-focused.
+**Mission**: Transform civic engagement by making local government services accessible, intelligent, and community-focused through modern microservices architecture.
 
 **Core Values**:
-- 🤝 **Community First** - Promote neighborly resolution over legal escalation
-- 🌍 **Cultural Sensitivity** - Respect diverse traditions and community values  
-- ⚡ **Immediate Action** - Provide clear, actionable guidance instantly
-- 🔒 **Data Sovereignty** - Self-hosted deployment for complete control
-- 💡 **Open Innovation** - Transparent, extensible, and collaborative platform
+- 🤝 **Community First** - Promote neighborly resolution and collaborative solutions
+- 🏗️ **Scalable Architecture** - Modern microservices for reliable, maintainable civic infrastructure
+- ⚡ **Immediate Action** - Provide clear, actionable guidance through intelligent automation
+- 🔒 **Data Sovereignty** - Self-hosted deployment options for complete municipal control
+- 💡 **Open Innovation** - Transparent, extensible, and collaborative platform development
 
-## 🏗️ **High-Level Architecture**
+## �️ **Microservices Architecture**
 
-CivicMind AI is built as a modular, scalable framework following modern microservices principles while maintaining simplicity for self-hosted deployments.
+CivicMind AI is built as a modern, scalable microservices platform following cloud-native principles while maintaining simplicity for municipal deployments.
 
 ```mermaid
 graph TB
-    A[🌐 Citizen Interface] --> B[🚪 API Gateway]
-    B --> C[🧠 Civic Orchestrator]
+    subgraph "Citizen Interface"
+        Citizens[👤 Citizens] 
+        WebApp[🌐 Web Application]
+        Mobile[📱 Mobile App]
+    end
     
-    C --> D[🤖 Specialized Agents]
-    D --> E[🚗 Parking Agent]
-    D --> F[🔊 Noise Agent]
-    D --> G[📋 Permits Agent]
-    D --> H[🏗️ Infrastructure Agent]
-    D --> I[🏠 Business Agent]
-    D --> J[🕌 Religious Events Agent]
+    subgraph "API Layer"
+        Gateway[🚪 API Gateway :8300]
+        Orchestrator[🎭 Orchestrator :8000]
+    end
     
-    C --> K[📚 Knowledge Base]
-    K --> L[🗄️ Vector Store]
-    K --> M[🏛️ Civic APIs]
-    K --> N[📊 Local Data]
+    subgraph "Civic Service APIs"
+        API1[🚗 Parking Service :8001]
+        API2[📋 Permits Service :8002]
+        API3[🔇 Noise Service :8003]
+        API4[⚡ Utilities Service :8004]
+        API5[🏠 Housing Service :8005]
+        API6[🏢 Business Service :8006]
+        API7[🛡️ Safety Service :8007]
+        API8[🌱 Environmental Service :8008]
+    end
     
-    C --> O[⚡ Actions Engine]
-    O --> P[📧 Document Generator]
-    O --> Q[📞 Contact Router]
-    O --> R[📈 Progress Tracker]
+    subgraph "MCP AI Agents"
+        MCP1[🤖 Parking Agent :9300]
+        MCP2[🤖 Permits Agent :9301]
+        MCP3[🤖 Noise Agent :9302]
+        MCP4[🤖 Utilities Agent :9303]
+        MCP5[🤖 Housing Agent :9304]
+        MCP6[🤖 Business Agent :9305]
+        MCP7[🤖 Safety Agent :9306]
+        MCP8[🤖 Environmental Agent :9307]
+    end
+    
+    subgraph "Data Layer"
+        SharedLib[📚 Shared Library]
+        Database[(🗄️ PostgreSQL)]
+        Cache[(⚡ Redis)]
+        Vector[(🧠 Vector Store)]
+    end
+    
+    Citizens --> WebApp
+    Citizens --> Mobile
+    WebApp --> Gateway
+    Mobile --> Gateway
+    
+    Gateway --> Orchestrator
+    Orchestrator --> API1
+    Orchestrator --> API2
+    Orchestrator --> API3
+    Orchestrator --> API4
+    
+    API1 <--> MCP1
+    API2 <--> MCP2
+    API3 <--> MCP3
+    API4 <--> MCP4
+    
+    API1 --> SharedLib
+    API2 --> SharedLib
+    MCP1 --> SharedLib
+    MCP2 --> SharedLib
+    
+    SharedLib --> Database
+    SharedLib --> Cache
+    SharedLib --> Vector
 ```
 
 ### **Key Components**:
-- **🧠 Civic Orchestrator**: LangGraph-powered workflow engine that routes issues to appropriate agents
-- **� Specialized Agents**: Domain-specific AI agents for parking, noise, permits, infrastructure, etc.
-- **� Knowledge Base**: Vector store with civic data, APIs, and local regulations
-- **⚡ Actions Engine**: Automated document generation, contact routing, and progress tracking
+
+<table>
+  <tr>
+    <td align="center">🚪</td>
+    <td><strong>API Gateway (Port 8300)</strong><br/>Intelligent request routing, authentication, rate limiting, and service discovery</td>
+  </tr>
+  <tr>
+    <td align="center">🎭</td>
+    <td><strong>Orchestrator (Port 8000)</strong><br/>Workflow coordination, multi-service transactions, and complex civic processes</td>
+  </tr>
+  <tr>
+    <td align="center">🏛️</td>
+    <td><strong>Civic Service APIs (8001-8008)</strong><br/>Domain-specific REST APIs for each civic service area with full CRUD operations</td>
+  </tr>
+  <tr>
+    <td align="center">🤖</td>
+    <td><strong>MCP AI Agents (9300-9307)</strong><br/>Specialized AI agents using Model Context Protocol for intelligent civic assistance</td>
+  </tr>
+  <tr>
+    <td align="center">📚</td>
+    <td><strong>Shared Library</strong><br/>Common models, utilities, authentication, and database abstractions</td>
+  </tr>
+</table>
+
+### **Service Domains**:
+
+| Domain | API Service | MCP Agent | AI Capabilities |
+|--------|-------------|-----------|----------------|
+| **🚗 Parking** | Port 8001 | Port 9300 | Smart parking assistance, violation resolution, permit guidance |
+| **📋 Permits** | Port 8002 | Port 9301 | Application guidance, requirement analysis, process automation |
+| **🔇 Noise** | Port 8003 | Port 9302 | Automated complaint filing, regulation lookup, mediation support |
+| **⚡ Utilities** | Port 8004 | Port 9303 | Outage reporting, service scheduling, billing assistance |
+| **🏠 Housing** | Port 8005 | Port 9304 | Eligibility checking, program matching, code compliance |
+| **🏢 Business** | Port 8006 | Port 9305 | Business setup guidance, incentive discovery, licensing |
+| **🛡️ Safety** | Port 8007 | Port 9306 | Hazard reporting, safety compliance, emergency coordination |
+| **🌱 Environmental** | Port 8008 | Port 9307 | Regulation compliance, sustainability programs, waste management |
 
 *For detailed architecture documentation, see [docs/architecture.md](docs/architecture.md)*
 
@@ -80,7 +176,7 @@ graph TB
 
 ### **Prerequisites**
 - Python 3.11+ 🐍
-- OpenAI API Key 🔑
+- Docker & Docker Compose 🐳
 - Git 📦
 
 ### **Installation**
@@ -90,27 +186,53 @@ graph TB
 git clone https://github.com/rajathota/civicmind-ai.git
 cd civicmind-ai
 
-# 2. Run the automated setup
-python setup.py
+# 2. Install shared library
+cd shared-lib
+pip install -e .
+cd ..
 
-# 3. Configure your environment
-cp .env.example .env
-# Edit .env with your OpenAI API key
+# 3. Start core services
+./scripts/start-dev.sh
 
-# 4. Start the server
-python server.py
+# Alternative: Docker Compose
+docker compose -f deployment/docker-compose.dev.yml up
 ```
 
 ### **First API Call**
 
 ```bash
-curl -X POST http://localhost:8000/api/v1/issues/analyze \
+# Test citizen request routing
+curl -X POST "http://localhost:8300/api/v1/issues/analyze" \
   -H "Content-Type: application/json" \
   -d '{
-    "description": "My neighbor parks blocking my driveway daily",
-    "location": "Folsom, CA",
+    "query": "My neighbor parks blocking my driveway every night",
+    "location": "Downtown District",
     "priority": "medium"
   }'
+```
+
+**Expected Response:**
+```json
+{
+  "service": "parking-service",
+  "confidence": 0.95,
+  "response": {
+    "issue_type": "parking_violation", 
+    "suggested_actions": ["Contact parking enforcement", "Document violations"],
+    "next_steps": "File complaint through parking service",
+    "agent_analysis": "This appears to be a recurring parking violation..."
+  }
+}
+```
+
+### **Service Health Check**
+
+```bash
+# Check all services
+curl http://localhost:8300/health   # API Gateway
+curl http://localhost:8000/health   # Orchestrator
+curl http://localhost:8001/health   # Parking Service
+curl http://localhost:9300/health   # Parking MCP Agent
 ```
 
 *For detailed setup instructions, see [docs/quickstart.md](docs/quickstart.md)*
@@ -120,67 +242,84 @@ curl -X POST http://localhost:8000/api/v1/issues/analyze \
 <table>
   <tr>
     <td align="center">🤖</td>
-    <td><strong>Multi-Agent Intelligence</strong><br/>Specialized AI agents for parking, noise, permits, infrastructure, and community events</td>
+    <td><strong>Multi-Agent Intelligence</strong><br/>Specialized AI agents for all civic domains using Model Context Protocol (MCP)</td>
+  </tr>
+  <tr>
+    <td align="center">🏗️</td>
+    <td><strong>Microservices Architecture</strong><br/>Independent, scalable services with Docker containerization and Kubernetes support</td>
+  </tr>
+  <tr>
+    <td align="center">🚪</td>
+    <td><strong>Intelligent API Gateway</strong><br/>Smart request routing, rate limiting, authentication, and service discovery</td>
   </tr>
   <tr>
     <td align="center">🤝</td>
     <td><strong>Community-First Approach</strong><br/>Promotes neighborly resolution before legal escalation</td>
   </tr>
   <tr>
-    <td align="center">🌍</td>
-    <td><strong>Cultural Sensitivity</strong><br/>Respects diverse community values and traditions</td>
-  </tr>
-  <tr>
-    <td align="center">🔒</td>
-    <td><strong>Self-Hosted Control</strong><br/>Deploy on your infrastructure for complete data sovereignty</td>
-  </tr>
-  <tr>
     <td align="center">⚡</td>
     <td><strong>Real-time Intelligence</strong><br/>Integration with city APIs, 311 systems, and open data portals</td>
   </tr>
   <tr>
+    <td align="center">🔒</td>
+    <td><strong>Self-Hosted Control</strong><br/>Deploy on municipal infrastructure for complete data sovereignty</td>
+  </tr>
+  <tr>
     <td align="center">📱</td>
-    <td><strong>Multi-Modal Input</strong><br/>Text, voice, and image input support (planned)</td>
+    <td><strong>Multi-Modal Input</strong><br/>Text, voice, and image input support with extensible interface design</td>
+  </tr>
+  <tr>
+    <td align="center">🔧</td>
+    <td><strong>Extensible Platform</strong><br/>Easy integration with existing government systems and legacy infrastructure</td>
   </tr>
 </table>
 
 ## 🌍 **Use Cases**
 
 ### **🏘️ Neighborhood Harmony**
-- Parking disputes and violations
-- Noise complaints and mediation
-- Property boundary issues
-- Pet-related concerns
+- **Parking Disputes**: Intelligent violation reporting, permit guidance, neighbor mediation
+- **Noise Complaints**: Automated filing, regulation lookup, community mediation support
+- **Property Issues**: Boundary disputes, maintenance concerns, HOA coordination
+- **Pet-Related Concerns**: Registration assistance, complaint mediation, regulation guidance
 
 ### **🏛️ Government Services**
-- Building permits and licensing
-- Business registration guidance
-- Event planning and permits
-- Zoning and planning inquiries
+- **Building Permits**: Application guidance, requirement analysis, process automation
+- **Business Registration**: Setup guidance, incentive discovery, licensing automation
+- **Event Planning**: Permit coordination, public space usage, community event support
+- **Zoning Inquiries**: Regulation lookup, compliance checking, planning assistance
 
 ### **🎉 Community Events**
-- Religious and cultural celebrations
-- Public space usage
-- Festival planning and coordination
-- Community meeting organization
+- **Religious Celebrations**: Event permit coordination, noise regulation guidance
+- **Cultural Festivals**: Multi-department coordination, safety planning, permit automation
+- **Public Gatherings**: Space reservation, permit routing, community notification
+- **Neighborhood Meetings**: Venue coordination, official filing, community outreach
 
-*For detailed examples and case studies, see [docs/examples.md](docs/examples.md)*
+### **🚨 Emergency & Safety**
+- **Hazard Reporting**: Automated routing, follow-up tracking, resolution coordination
+- **Safety Inspections**: Scheduling automation, compliance checking, violation resolution
+- **Emergency Coordination**: Multi-service response, resource allocation, public notification
+- **Infrastructure Issues**: Utility outage reporting, road maintenance, public safety alerts
+
+*For detailed examples and case studies, see [docs/examples/](docs/examples/)*
 
 ## 🛠️ **Technology Stack**
 
 <div align="center">
 
-**🧠 AI & Language Models**  
-OpenAI GPT-4 • LangChain • LangGraph • LangSmith
+**🤖 AI & Agents**  
+Model Context Protocol (MCP) • FastAPI • Python 3.11+ • Vector Databases
 
-**⚡ Backend & APIs**  
-FastAPI • Python 3.11+ • PostgreSQL • Redis
+**🏗️ Microservices**  
+FastAPI • Docker • Kubernetes • API Gateway • Service Mesh
 
-**📊 Data & Vector Stores**  
-ChromaDB • Weaviate • Vector Search
+**📊 Data & Storage**  
+PostgreSQL • Redis • Vector Search • Shared Libraries
 
-**🚀 Deployment**  
-Docker • Kubernetes • Self-Hosted • Cloud-Native
+**🚀 Deployment & DevOps**  
+Docker Compose • Kubernetes • Helm Charts • CI/CD • Monitoring
+
+**🔧 Integration**  
+REST APIs • OpenAPI • Webhook Support • Legacy System Adapters
 
 </div>
 
@@ -188,36 +327,278 @@ Docker • Kubernetes • Self-Hosted • Cloud-Native
 
 ```
 civicmind-ai/
-├── �️ civicmind/                    # Core framework package
-│   ├── 🧠 core/                     # Orchestration engine
-│   ├── 🤖 agents/                   # Specialized AI agents
-│   └── � integrations/             # External API connectors
-├── � docs/                         # Comprehensive documentation
-├── 🐳 deployment/                   # Deployment configurations
-├── 🌐 ui/                          # Web interface (future)
-├── 🧪 tests/                       # Test suites
-├── 🚀 server.py                    # FastAPI application
-└── ⚙️ setup.py                     # Automated installer
+├── 🏗️ independent-services/          # Microservices architecture
+│   ├── 🚪 civicmind-api-gateway/     # API Gateway (Port 8300)
+│   ├── 🎭 civicmind-orchestrator-service/  # Workflow coordination (Port 8000)
+│   ├── 🚗 civicmind-parking-service/       # Parking domain API (Port 8001)
+│   ├── 📋 civicmind-permits-service/       # Permits domain API (Port 8002)
+│   ├── 🤖 civicmind-parking-mcp-server/    # Parking AI agent (Port 9300)
+│   ├── 🤖 civicmind-permits-mcp-server/    # Permits AI agent (Port 9301)
+│   ├── 🤖 civicmind-noise-mcp-server/      # Noise AI agent (Port 9302)
+│   ├── 🤖 civicmind-utilities-mcp-server/  # Utilities AI agent (Port 9303)
+│   ├── 🤖 civicmind-housing-mcp-server/    # Housing AI agent (Port 9304)
+│   ├── 🤖 civicmind-business-mcp-server/   # Business AI agent (Port 9305)
+│   ├── 🤖 civicmind-safety-mcp-server/     # Safety AI agent (Port 9306)
+│   └── 🤖 civicmind-environmental-mcp-server/  # Environmental AI agent (Port 9307)
+├── 📚 shared-lib/                     # Common libraries and models
+│   └── civicmind_common/              # Shared utilities, auth, database
+├── 📖 docs/                          # Comprehensive documentation
+│   ├── architecture.md               # System architecture details
+│   ├── deployment.md                 # Deployment strategies
+│   ├── quickstart.md                 # Getting started guide
+│   └── examples/                     # Tutorials and examples
+├── 🚢 deployment/                    # Infrastructure configurations
+│   ├── docker-compose.dev.yml        # Development environment
+│   ├── docker-compose.prod.yml       # Production deployment
+│   └── kubernetes/                   # K8s manifests and Helm charts
+├── 🧪 tests/                         # Comprehensive test suites
+├── 🌐 ui/                            # Web interface (future)
+├── 🚀 server.py                      # Legacy single-service entry (deprecated)
+└── ⚙️ setup.py                       # Automated installer and dependencies
 ```
+
+## 🤖 **Building an AI Agent Example**
+
+Create a new MCP server for a custom civic domain:
+
+```python
+"""Transportation MCP Server Example"""
+import asyncio
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
+from mcp.types import Resource, Tool, TextContent
+from civicmind_common.models import TransportationRequest
+from civicmind_common.clients import TransportationServiceClient
+
+class TransportationMCPServer:
+    def __init__(self):
+        self.server = Server("transportation-mcp-server")
+        self.service_client = TransportationServiceClient()
+        self._setup_handlers()
+    
+    def _setup_handlers(self):
+        @self.server.list_resources()
+        async def handle_list_resources():
+            return [
+                Resource(
+                    uri="transportation://routes",
+                    name="Public Transit Routes",
+                    description="Bus and train route information",
+                    mimeType="application/json"
+                )
+            ]
+        
+        @self.server.list_tools()
+        async def handle_list_tools():
+            return [
+                Tool(
+                    name="find_route",
+                    description="Find optimal public transit route",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "from": {"type": "string", "description": "Origin location"},
+                            "to": {"type": "string", "description": "Destination location"},
+                            "time": {"type": "string", "description": "Preferred departure time"}
+                        },
+                        "required": ["from", "to"]
+                    }
+                )
+            ]
+        
+        @self.server.call_tool()
+        async def handle_call_tool(name: str, arguments: dict):
+            if name == "find_route":
+                # Use shared service client
+                route_result = await self.service_client.find_optimal_route(
+                    from_location=arguments["from"],
+                    to_location=arguments["to"],
+                    departure_time=arguments.get("time")
+                )
+                return [TextContent(type="text", text=route_result)]
+
+# Start the server
+async def main():
+    server = TransportationMCPServer()
+    async with stdio_server() as (read_stream, write_stream):
+        await server.server.run(read_stream, write_stream)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+*For complete tutorials, see [docs/examples/building-an-agent.md](docs/examples/building-an-agent.md)*
+
+## 🚢 **Deployment**
+
+### **Development Environment**
+```bash
+# Quick start with Docker Compose
+docker compose -f deployment/docker-compose.dev.yml up
+
+# Or start services individually for development
+./scripts/start-dev.sh
+```
+
+### **Production Deployment**
+```bash
+# Production deployment with scaling
+docker compose -f deployment/docker-compose.prod.yml up -d
+
+# Kubernetes deployment
+kubectl apply -f deployment/kubernetes/
+helm install civicmind-ai deployment/helm/
+```
+
+### **Service Monitoring**
+```bash
+# Health checks for all services
+curl http://localhost:8300/health   # API Gateway
+curl http://localhost:8000/health   # Orchestrator
+curl http://localhost:8001/health   # Parking Service
+
+# Metrics and monitoring
+docker compose -f deployment/docker-compose.prod.yml logs -f
+```
+
+*For comprehensive deployment strategies, see [docs/deployment.md](docs/deployment.md)*
+
+## 🧪 **Testing**
+
+### **Running Tests**
+```bash
+# Unit tests
+pytest tests/unit/
+
+# Integration tests  
+pytest tests/integration/
+
+# End-to-end tests
+pytest tests/e2e/
+
+# Load testing
+locust -f tests/load/locustfile.py --host=http://localhost:8300
+```
+
+### **API Testing Examples**
+```bash
+# Test API Gateway intelligent routing
+curl -X POST "http://localhost:8300/api/v1/issues/analyze" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "I need a building permit for my garage"}'
+
+# Test MCP server directly
+curl -X POST "http://localhost:9301/mcp/tools/list" \
+  -H "Content-Type: application/json"
+
+# Multi-service workflow test
+curl -X POST "http://localhost:8000/api/v1/workflows/restaurant-opening" \
+  -H "Content-Type: application/json" \
+  -d '{"business_name": "Test Restaurant", "location": "Downtown"}'
+```
+
+## 📚 **Documentation**
+
+### **Developer Guides**
+- [**Architecture Overview**](docs/architecture.md) - Microservices design and components
+- [**Deployment Guide**](docs/deployment.md) - Development to production deployment strategies
+- [**API Reference**](docs/api-reference.md) - Complete REST API and MCP protocol documentation
+- [**Service Development**](docs/service-development.md) - Creating new civic services and MCP agents
+
+### **Examples & Tutorials**
+- [**Building Your First Agent**](docs/examples/building-an-agent.md) - Step-by-step MCP agent creation tutorial
+- [**Custom Service Integration**](docs/examples/custom-service.md) - Adding new civic domains to the platform
+- [**Advanced Orchestration**](docs/examples/orchestration.md) - Multi-service workflow coordination
+- [**Municipal Implementation**](docs/examples/municipal-implementation.md) - Government adoption strategies
+
+### **Implementation Guides**
+- [**Integration Patterns**](docs/integration-patterns.md) - Legacy system integration approaches
+- [**Security Best Practices**](docs/security.md) - Government-grade security implementation
+- [**Scaling Strategies**](docs/scaling.md) - Performance optimization and horizontal scaling
 
 ## 🤝 **Contributing**
 
-We welcome contributions from developers, civic technologists, and community advocates!
+We welcome contributions from developers, civic technologists, municipal governments, and community advocates!
 
 ### **Ways to Contribute**
-- 🐛 Bug reports and fixes
-- 💡 Feature requests and implementations
-- 📝 Documentation improvements
-- 🌍 Localization and cultural adaptations
-- 🤖 New specialized agents
+- 🐛 **Bug Reports & Fixes**: Help us improve platform reliability
+- 💡 **Feature Development**: Implement new civic services and AI agents
+- 📝 **Documentation**: Improve guides, tutorials, and API documentation
+- 🌍 **Localization**: Adapt platform for different municipalities and cultures
+- 🤖 **AI Agent Development**: Create specialized agents for new civic domains
+- 🏗️ **Architecture Improvements**: Enhance microservices design and scalability
+- 🧪 **Testing**: Expand test coverage and quality assurance
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+### **Development Workflow**
+1. **Fork the repository** and create a feature branch
+2. **Follow coding standards**: Black formatting, type hints, comprehensive tests
+3. **Update documentation**: Include API docs and usage examples
+4. **Test thoroughly**: Unit, integration, and end-to-end tests
+5. **Submit pull request**: Clear description with implementation details
+
+### **Coding Standards**
+- **Python**: Black formatting, flake8 linting, type hints required
+- **API Design**: RESTful principles, OpenAPI documentation, versioning
+- **MCP Protocol**: Follow Model Context Protocol specifications strictly
+- **Testing**: Minimum 80% test coverage for all new functionality
+- **Documentation**: Clear docstrings, API examples, deployment guides
+
+### **Adding New Services**
+1. **Use Service Templates**: Copy existing service structure from shared-lib
+2. **Implement Domain Logic**: Create civic domain-specific business rules
+3. **MCP Integration**: Develop AI agent with appropriate resources and tools
+4. **API Documentation**: Generate OpenAPI specs and usage examples
+5. **Service Registration**: Add service to API Gateway auto-discovery
+
+*See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines and development setup.*
 
 ## 📄 **License**
 
 This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
 
-**Why Apache 2.0?** Commercial use permitted, modification allowed, patent protection included, while maintaining open-source principles.
+**Why Apache 2.0?** 
+- ✅ Commercial use permitted for municipal deployments
+- ✅ Modification allowed for local government customization
+- ✅ Patent protection included for enterprise adoption
+- ✅ Maintains open-source principles and community collaboration
+
+## 🆘 **Support & Community**
+
+- **📖 Documentation**: [Complete platform docs](docs/)
+- **🐛 Issues**: [GitHub Issues](https://github.com/rajathota/civicmind-ai/issues)  
+- **💬 Discussions**: [GitHub Discussions](https://github.com/rajathota/civicmind-ai/discussions)
+- **📧 Email**: civicmind-support@community.ai
+- **🏛️ Municipal Partnership**: partnerships@civicmind.ai
+
+## 🌟 **Roadmap**
+
+### **Phase 1 - Core Platform** ✅
+- [x] Microservices architecture with Docker containerization
+- [x] API Gateway with intelligent request routing
+- [x] Model Context Protocol (MCP) integration for AI agents
+- [x] 8 civic domain MCP servers with specialized capabilities
+- [x] Shared library with common models and utilities
+
+### **Phase 2 - Enhanced Functionality** 🔄
+- [ ] Complete REST API services for all civic domains (8001-8008)
+- [ ] Advanced workflow orchestration with multi-service transactions
+- [ ] Real-time notifications and webhook integrations
+- [ ] Web and mobile application interfaces
+- [ ] Production-ready monitoring and observability
+
+### **Phase 3 - Enterprise Features** 📋
+- [ ] Multi-tenant architecture for municipal hosting
+- [ ] Advanced analytics dashboard with civic insights
+- [ ] Third-party integrations (311 systems, GIS, payment processors)
+- [ ] Enterprise security features and compliance certification
+- [ ] Kubernetes operators and automated scaling
+
+### **Phase 4 - AI Enhancement** 🤖
+- [ ] Voice interface integration with speech recognition
+- [ ] Predictive service recommendations using machine learning
+- [ ] Automated issue resolution and workflow completion
+- [ ] Sentiment analysis and citizen satisfaction tracking
+- [ ] Computer vision for image-based issue reporting
 
 ---
 
