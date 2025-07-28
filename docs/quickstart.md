@@ -1,23 +1,47 @@
-# CivicMind AI Framework - Quick Start Guide
+# 🚀 CivicMind AI Quick Start Guide
 
-## Overview
+Get CivicMind AI up and running in minutes with this comprehensive quick start guide.
 
-CivicMind AI is an open-source framework for building AI agents that help citizens resolve civic issues. The framework provides:
+## 📋 Prerequisites
 
-- **Multi-Agent System**: Specialized agents for different civic domains
-- **Community-First Approach**: Prioritizes local resolution before legal escalation
-- **Cultural Sensitivity**: Respects diverse community values and traditions
-- **Self-Hosted Deployment**: Full control over your data and infrastructure
+Before you begin, ensure you have the following installed:
 
-## Installation
+### **System Requirements**
+- **Python 3.11+** 🐍 (Required for modern async features and type hints)
+- **Git** 📦 (For cloning the repository)
+- **OpenAI API Key** 🔑 (For AI agent functionality)
+- **8GB RAM minimum** (16GB recommended for production)
+- **10GB disk space** (for vector stores and logs)
 
-### Prerequisites
+### **Optional Dependencies**
+- **Docker & Docker Compose** 🐳 (For containerized deployment)
+- **PostgreSQL** 🗄️ (For persistent data storage)
+- **Redis** ⚡ (For caching and session management)
 
-- Python 3.11 or higher
-- OpenAI API key
-- Optional: LangSmith API key for debugging and observability
+## 🛠️ Installation Methods
 
-### Step 1: Clone and Setup
+### **Method 1: Automated Setup (Recommended)**
+
+The automated setup script handles everything for you:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/rajathota/civicmind-ai.git
+cd civicmind-ai
+
+# 2. Run the automated setup
+python setup.py
+
+# Follow the interactive prompts to configure your installation
+```
+
+The setup script will:
+- ✅ Check Python version compatibility
+- ✅ Install required dependencies
+- ✅ Create configuration files
+- ✅ Set up the database
+- ✅ Initialize vector stores
+- ✅ Validate the installation
 
 ```bash
 git clone <your-repo-url>
